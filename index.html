@@ -1,0 +1,969 @@
+<html>
+  <head>
+    <title>2022快乐</title>
+    <meta
+      name="viewport"
+      content="initial-scale=1,width=device-width,height=device-height,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover"
+    />
+    <meta charset="UTF-8" />
+    <script>
+      !(function (e) {
+        var t = e.document,
+          n = t.documentElement,
+          i = "orientationchange" in e ? "orientationchange" : "resize",
+          a = (function e() {
+            var t = n.getBoundingClientRect().width;
+            return (
+              (n.style.fontSize =
+                5 * Math.max(Math.min((t / 750) * 20, 14.4), 8.55) + "px"),
+              e
+            );
+          })();
+        n.setAttribute(
+          "data-dpr",
+          e.navigator.appVersion.match(/iphone/gi) ? e.devicePixelRatio : 1
+        ),
+          /iP(hone|od|ad)/.test(e.navigator.userAgent) &&
+            (t.documentElement.classList.add("ios"),
+            parseInt(
+              e.navigator.appVersion.match(/OS (\d+)_(\d+)_?(\d+)?/)[1],
+              10
+            ) >= 8 && t.documentElement.classList.add("hairline")),
+          t.addEventListener &&
+            (e.addEventListener(i, a, !1),
+            t.addEventListener("DOMContentLoaded", a, !1));
+      })(window);
+      // 默认为320-420范围，改成了320-540，与其他平台保持一致。
+    </script>
+    <link rel="stylesheet" href="firework.css">
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+      }
+
+      :root {
+        --animate-duration: 1s;
+        --animate-delay: 1s;
+        --animate-repeat: 1;
+      }
+
+      .box-item > span {
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-duration: var(--animate-duration);
+        animation-duration: var(--animate-duration);
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+      }
+
+      .box-item > span.animate__infinite {
+        -webkit-animation-iteration-count: infinite;
+        animation-iteration-count: infinite;
+      }
+
+      .box-item > span.animate__repeat-1 {
+        -webkit-animation-iteration-count: 1;
+        animation-iteration-count: 1;
+        -webkit-animation-iteration-count: var(--animate-repeat);
+        animation-iteration-count: var(--animate-repeat);
+      }
+
+      .box-item > span.animate__repeat-2 {
+        -webkit-animation-iteration-count: 2;
+        animation-iteration-count: 2;
+        -webkit-animation-iteration-count: calc(var(--animate-repeat) * 2);
+        animation-iteration-count: calc(var(--animate-repeat) * 2);
+      }
+
+      .box-item > span.animate__repeat-3 {
+        -webkit-animation-iteration-count: 3;
+        animation-iteration-count: 3;
+        -webkit-animation-iteration-count: calc(var(--animate-repeat) * 3);
+        animation-iteration-count: calc(var(--animate-repeat) * 3);
+      }
+
+      .box-item > span.animate__delay-1s {
+        -webkit-animation-delay: 1s;
+        animation-delay: 1s;
+        -webkit-animation-delay: var(--animate-delay);
+        animation-delay: var(--animate-delay);
+      }
+
+      .box-item > span.animate__delay-2s {
+        -webkit-animation-delay: 2s;
+        animation-delay: 2s;
+        -webkit-animation-delay: calc(var(--animate-delay) * 2);
+        animation-delay: calc(var(--animate-delay) * 2);
+      }
+
+      .box-item > span.animate__delay-3s {
+        -webkit-animation-delay: 3s;
+        animation-delay: 3s;
+        -webkit-animation-delay: calc(var(--animate-delay) * 3);
+        animation-delay: calc(var(--animate-delay) * 3);
+      }
+
+      .box-item > span.animate__delay-4s {
+        -webkit-animation-delay: 4s;
+        animation-delay: 4s;
+        -webkit-animation-delay: calc(var(--animate-delay) * 4);
+        animation-delay: calc(var(--animate-delay) * 4);
+      }
+
+      .box-item > span.animate__delay-5s {
+        -webkit-animation-delay: 5s;
+        animation-delay: 5s;
+        -webkit-animation-delay: calc(var(--animate-delay) * 5);
+        animation-delay: calc(var(--animate-delay) * 5);
+      }
+
+      .box-item > span.animate__faster {
+        -webkit-animation-duration: 0.5s;
+        animation-duration: 0.5s;
+        -webkit-animation-duration: calc(var(--animate-duration) / 2);
+        animation-duration: calc(var(--animate-duration) / 2);
+      }
+
+      .box-item > span.animate__fast {
+        -webkit-animation-duration: 0.8s;
+        animation-duration: 0.8s;
+        -webkit-animation-duration: calc(var(--animate-duration) * 0.8);
+        animation-duration: calc(var(--animate-duration) * 0.8);
+      }
+
+      .box-item > span.animate__slow {
+        -webkit-animation-duration: 2s;
+        animation-duration: 2s;
+        -webkit-animation-duration: calc(var(--animate-duration) * 2);
+        animation-duration: calc(var(--animate-duration) * 2);
+      }
+
+      .box-item > span.animate__slower {
+        -webkit-animation-duration: 3s;
+        animation-duration: 3s;
+        -webkit-animation-duration: calc(var(--animate-duration) * 3);
+        animation-duration: calc(var(--animate-duration) * 3);
+      }
+
+      .page-box {
+        position: relative;
+        height: 100vh;
+        max-width: 7.5rem;
+        margin: 0 auto;
+
+        background: url(./images/bg.jpg) no-repeat;
+        background-size: 100% auto;
+        overflow: hidden;
+      }
+
+      .star {
+        display: block;
+        width: 2px;
+        height: 2px;
+        border-radius: 50%;
+        background: #fff;
+        position: absolute;
+        transform-origin: center;
+        /* transform-origin: 100% 0; */
+        animation-direction: normal;
+        opacity: 0;
+        transform: scale(0) rotate(0) translate3d(6rem, -6rem, 0);
+      }
+
+      .star:after {
+        content: "";
+        position: absolute;
+        top: 20px;
+        left: 2px;
+        border: 1px solid #f00;
+        border-width: 1px 150px 1px 150px;
+        border-color: transparent transparent transparent #fff;
+        transform: rotate(-45deg) translate3d(1px, -1px, 0);
+        transform-origin: 0% 100%;
+        animation: shooting 1s infinite ease-out;
+        animation-direction: normal;
+      }
+
+      @keyframes shooting {
+        50% {
+          transform: scale(1) rotate(-45deg) translate(0px, 0px);
+        }
+        100% {
+          transform: scale(0.5) rotate(-45deg) translate(0px, -1px);
+        }
+      }
+      @keyframes star-move {
+        0% {
+          opacity: 0;
+          transform: scale(0) rotate(0) translate3d(0, 0, 0);
+        }
+        50% {
+          opacity: 1;
+          transform: scale(1) rotate(0) translate3d(-100px, 100px, 0);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(1) rotate(0) translate3d(-200px, 200px, 0);
+        }
+      }
+
+      .wang-star-1 {
+        /* transform: scale(1) rotate(0) translate3d(-5rem, -5rem, 0); */
+        animation: star-move1 1.5s ease-out;
+        /* opacity: 1; */
+      }
+
+      @keyframes star-move1 {
+        0% {
+          opacity: 1;
+          transform: scale(1) rotate(0) translate3d(6rem, -6rem, 0);
+        }
+        90% {
+          opacity: 1;
+          transform: scale(1) rotate(0) translate3d(1rem, 0.5rem, 0);
+        }
+
+        100% {
+          transform: scale(1) rotate(0) translate3d(1rem, 0.5rem, 0);
+          opacity: 0;
+        }
+      }
+
+      .box {
+        margin: auto;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 45%;
+        display: flex;
+        padding: 0.32rem;
+        justify-content: center;
+      }
+
+      .box-item {
+        width: 25%;
+        padding-bottom: 25%;
+        /* border: 1px solid #fff; */
+        position: relative;
+        color: #fff;
+      }
+
+      .wang {
+        display: block;
+        position: absolute;
+        background-color: #fff;
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        transform-origin: center;
+        height: 0.15rem;
+        width: 1.5rem;
+        display: none;
+      }
+
+      .box-item > span.wang-1 {
+        position: absolute;
+        width: 1.4rem;
+        transform: translateY(-0.5rem);
+      }
+
+      @keyframes zoomIn {
+        from {
+          opacity: 0;
+          transform: scale3d(0.3, 0.3, 0.3);
+        }
+
+        50% {
+          opacity: 1;
+        }
+      }
+
+      .zoomIn {
+        animation-name: zoomIn;
+      }
+
+      @keyframes zoomOut {
+        from {
+          opacity: 1;
+        }
+
+        50% {
+          opacity: 0;
+          transform: scale3d(0.3, 0.3, 0.3);
+        }
+
+        to {
+          opacity: 0;
+        }
+      }
+
+      .box-item > span.show {
+        display: block;
+        animation-duration: 0.5s;
+        animation-name: zoomIn;
+      }
+
+      .box-item > span.hide {
+        display: block;
+        animation-duration: 0.5s;
+        animation-name: zoomOut;
+      }
+
+      .box-item > span.wang-2 {
+        position: absolute;
+        width: 1.1rem;
+        transform: rotate(90deg);
+        /* transition: transform 1s; */
+      }
+
+      .box-item > span.wang-2.move-yi {
+        animation-name: moveYi;
+        animation-duration: 1s;
+      }
+
+      .box-item > span.wang-3.move-yi3 {
+        animation-name: moveYi3;
+        animation-duration: 1s;
+      }
+
+      .box-item > span.wang-1.move-yi5 {
+        animation-name: moveYi5;
+        animation-duration: 0.5s;
+      }
+
+      .box-item > span.wang-4.move-yi6 {
+        animation-name: moveYi6;
+        animation-duration: 0.5s;
+      }
+
+      @keyframes moveYi {
+        to {
+          transform: rotate(0deg) translateX(284%) translateY(-0.4rem);
+          width: 1.2rem;
+        }
+      }
+
+      @keyframes moveYi3 {
+        to {
+          transform: rotate(0deg) translateX(343%) translateY(0.4rem);
+          width: 1.5rem;
+        }
+      }
+
+      @keyframes moveYi5 {
+        to {
+          transform: translateY(-0.4rem);
+          width: 1.2rem;
+        }
+      }
+
+      @keyframes moveYi6 {
+        to {
+          transform: translateY(0.4rem);
+        }
+      }
+
+      .box-item.box-item2 {
+        width: 0;
+        transition: width 0.5s;
+      }
+
+      .box-item.box-item2.box-item2-show {
+        width: 25%;
+      }
+
+      .box-item.box-item2.box-item2-show .ling.show {
+        opacity: 1;
+      }
+
+      .box-item.box-item2 .ling {
+        opacity: 0;
+      }
+
+      .wang-3 {
+        position: absolute;
+        width: 1.3rem;
+      }
+
+      .wang-4 {
+        position: absolute;
+        width: 1.5rem;
+        transform: translateY(0.5rem);
+      }
+
+      .ling {
+        display: block;
+        position: absolute;
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        transform-origin: center;
+        height: 1.2rem;
+        width: 1.2rem;
+
+        border-radius: 100%;
+        background: #fff;
+      }
+
+      .yi {
+        display: block;
+        position: absolute;
+        background-color: #fff;
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        transform-origin: center;
+        height: 0.15rem;
+        width: 1.4rem;
+        display: none;
+      }
+
+      .box-item > span.yi.move-yi2 {
+        animation-name: moveYi2;
+        animation-duration: 0.5s;
+      }
+
+      @keyframes moveYi2 {
+        to {
+          transform: translateY(0.4rem);
+          width: 1.5rem;
+        }
+      }
+
+      .dayi {
+        display: block;
+        position: absolute;
+        background-color: #fff;
+        margin: auto;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        transform-origin: center;
+        height: 0.1rem;
+        width: 1.5rem;
+        display: none;
+      }
+
+      .dayi-1 {
+        position: absolute;
+        width: 1.4rem;
+        transform: translateY(-0.6rem);
+      }
+
+      .dayi-2 {
+        position: absolute;
+        width: 0.4rem;
+        transform: rotate(90deg) translateX(-0.56rem);
+      }
+
+      .dayi-3 {
+        position: absolute;
+        width: 1.2rem;
+        transform: translateY(-0.4rem);
+      }
+
+      .dayi-4 {
+        position: absolute;
+        width: 0.25rem;
+        transform: rotate(90deg) translateY(0.65rem) translateX(-0.1rem);
+      }
+
+      .dayi-5 {
+        position: absolute;
+        width: 1.4rem;
+        transform: translateY(-0.2rem);
+      }
+
+      .dayi-6 {
+        position: absolute;
+        width: 0.25rem;
+        transform: rotate(90deg) translateY(-0.65rem) translateX(-0.1rem);
+      }
+
+      .dayi-7 {
+        position: absolute;
+        width: 1rem;
+        transform: translateY(0rem);
+      }
+
+      .dayi-8 {
+        position: absolute;
+        width: 0.32rem;
+        transform: rotate(90deg) translateY(0.5rem) translateX(0.32rem);
+      }
+
+      .dayi-9 {
+        position: absolute;
+        width: 1.1rem;
+        transform: translateY(0.2rem);
+      }
+
+      .dayi-10 {
+        position: absolute;
+        width: 0.32rem;
+        transform: rotate(90deg) translateY(-0.5rem) translateX(0.32rem);
+      }
+
+      .dayi-11 {
+        position: absolute;
+        width: 1.1rem;
+        transform: translateY(0.4rem);
+      }
+
+      .dayi-12 {
+        position: absolute;
+        width: 0.25rem;
+        transform: rotate(45deg) translateY(0.6rem) translateX(0.2rem);
+      }
+
+      .dayi-13 {
+        position: absolute;
+        width: 0.25rem;
+        transform: rotate(135deg) translateY(-0.6rem) translateX(0.2rem);
+      }
+
+      .dayi-14 {
+        position: absolute;
+        width: 1.4rem;
+        transform: translateY(0.7rem);
+      }
+
+      .dayi-15 {
+        position: absolute;
+        width: 1rem;
+        transform: translateY(-2.3rem);
+      }
+
+      .box-item > span.dayi-7.move-yi4 {
+        animation-name: moveYi4;
+        animation-duration: 0.5s;
+      }
+
+      @keyframes moveYi4 {
+        to {
+          transform: translateY(-0.4rem);
+          height: 0.15rem;
+          width: 1.2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page-box">
+      <div class="box">
+        <div class="box-item">
+          <i class="star wang-star"></i>
+          <span class="wang wang-1"></span>
+          <span class="wang wang-2"></span>
+          <span class="wang wang-3"></span>
+          <span class="wang wang-4"></span>
+        </div>
+        <div class="box-item box-item2">
+          <i class="star ling-star"></i>
+          <span class="ling"></span>
+        </div>
+        <div class="box-item">
+          <i class="star yi-star"></i>
+          <span class="yi yi-1"></span>
+        </div>
+        <div class="box-item">
+          <i class="star dayi-star"></i>
+          <span class="dayi dayi-1"></span>
+          <span class="dayi dayi-2"></span>
+          <span class="dayi dayi-3"></span>
+          <span class="dayi dayi-4"></span>
+          <span class="dayi dayi-5"></span>
+          <span class="dayi dayi-6"></span>
+          <span class="dayi dayi-7"></span>
+          <span class="dayi dayi-8"></span>
+          <span class="dayi dayi-9"></span>
+          <span class="dayi dayi-10"></span>
+          <span class="dayi dayi-11"></span>
+          <span class="dayi dayi-12"></span>
+          <span class="dayi dayi-13"></span>
+          <span class="dayi dayi-14"></span>
+        </div>
+      </div>
+      <canvas id="canvas"></canvas>
+    </div>
+    <script>
+      var $ = function (s) {
+        return document.querySelector(s);
+      };
+
+      var $$ = function (s) {
+        return document.querySelectorAll(s);
+      };
+
+      var awaitTime = function (time) {
+        return new Promise(function (resolve, reject) {
+          setTimeout(function () {
+            resolve();
+          }, time || 1000);
+        });
+      };
+
+      var ready = async function () {
+        var arr = [
+          {
+            selector: ".wang-star",
+            className: "wang-star-1",
+            time: 1500,
+          },
+          {
+            selector: ".wang-1",
+            className: "show",
+            time: 500,
+            remove: {
+              selector: ".wang-star",
+              className: "wang-star-1",
+            },
+          },
+          {
+            selector: ".wang-star",
+            className: "wang-star-1",
+            time: 1500,
+          },
+          {
+            selector: ".wang-2",
+            className: "show",
+            time: 500,
+            remove: {
+              selector: ".wang-star",
+              className: "wang-star-1",
+            },
+          },
+          {
+            selector: ".wang-star",
+            className: "wang-star-1",
+            time: 1500,
+          },
+          {
+            selector: ".wang-3",
+            className: "show",
+            time: 500,
+            remove: {
+              selector: ".wang-star",
+              className: "wang-star-1",
+            },
+          },
+          {
+            selector: ".wang-star",
+            className: "wang-star-1",
+            time: 1500,
+          },
+          {
+            selector: ".wang-4",
+            className: "show",
+            time: 500,
+            remove: {
+              selector: ".wang-star",
+              className: "wang-star-1",
+            },
+          },
+
+          {
+            selector: ".yi-star",
+            className: "wang-star-1",
+            time: 1500,
+          },
+          {
+            selector: ".yi-1",
+            className: "show",
+            time: 500,
+            remove: {
+              selector: ".yi-star",
+              className: "wang-star-1",
+            },
+          },
+          {
+            selector: ".dayi-star",
+            className: "wang-star-1",
+            time: 1500,
+          },
+          {
+            selector: ".dayi-1",
+            className: "show",
+            time: 500,
+            remove: {
+              selector: ".dayi-star",
+              className: "wang-star-1",
+            },
+          },
+          {
+            selector: ".dayi-star",
+            className: "wang-star-1",
+            time: 1500,
+          },
+          {
+            selector: ".dayi-2",
+            className: "show",
+            time: 500,
+            remove: {
+              selector: ".dayi-star",
+              className: "wang-star-1",
+            },
+          },
+          {
+            selector: ".dayi-star",
+            className: "wang-star-1",
+            time: 1500,
+          },
+          {
+            selector: ".dayi-3",
+            className: "show",
+            time: 500,
+            remove: {
+              selector: ".dayi-star",
+              className: "wang-star-1",
+            },
+          },
+          {
+            selector: ".dayi-star",
+            className: "wang-star-1",
+            time: 1500,
+          },
+          {
+            selector: ".dayi-4",
+            className: "show",
+            time: 500,
+            remove: {
+              selector: ".dayi-star",
+              className: "wang-star-1",
+            },
+          },
+          {
+            selector: ".dayi-star",
+            className: "wang-star-1",
+            time: 1500,
+          },
+          {
+            selector: ".dayi-5",
+            className: "show",
+            time: 500,
+            remove: {
+              selector: ".dayi-star",
+              className: "wang-star-1",
+            },
+          },
+          {
+            selector: ".dayi-star",
+            className: "wang-star-1",
+            time: 1500,
+          },
+          {
+            selector: ".dayi-6",
+            className: "show",
+            time: 500,
+            remove: {
+              selector: ".dayi-star",
+              className: "wang-star-1",
+            },
+          },
+          {
+            selector: ".dayi-star",
+            className: "wang-star-1",
+            time: 1500,
+          },
+          {
+            selector: ".dayi-7",
+            className: "show",
+            time: 500,
+            remove: {
+              selector: ".dayi-star",
+              className: "wang-star-1",
+            },
+          },
+          {
+            selector: ".dayi-star",
+            className: "wang-star-1",
+            time: 1500,
+          },
+          {
+            selector: ".dayi-8",
+            className: "show",
+            time: 500,
+            remove: {
+              selector: ".dayi-star",
+              className: "wang-star-1",
+            },
+          },
+          {
+            selector: ".dayi-star",
+            className: "wang-star-1",
+            time: 1500,
+          },
+          {
+            selector: ".dayi-9",
+            className: "show",
+            time: 500,
+            remove: {
+              selector: ".dayi-star",
+              className: "wang-star-1",
+            },
+          },
+          {
+            selector: ".dayi-star",
+            className: "wang-star-1",
+            time: 1500,
+          },
+          {
+            selector: ".dayi-10",
+            className: "show",
+            time: 500,
+            remove: {
+              selector: ".dayi-star",
+              className: "wang-star-1",
+            },
+          },
+          {
+            selector: ".dayi-star",
+            className: "wang-star-1",
+            time: 1500,
+          },
+          {
+            selector: ".dayi-11",
+            className: "show",
+            time: 500,
+            remove: {
+              selector: ".dayi-star",
+              className: "wang-star-1",
+            },
+          },
+          {
+            selector: ".dayi-star",
+            className: "wang-star-1",
+            time: 1500,
+          },
+          {
+            selector: ".dayi-12",
+            className: "show",
+            time: 500,
+            remove: {
+              selector: ".dayi-star",
+              className: "wang-star-1",
+            },
+          },
+          {
+            selector: ".dayi-star",
+            className: "wang-star-1",
+            time: 1500,
+          },
+          {
+            selector: ".dayi-13",
+            className: "show",
+            time: 500,
+            remove: {
+              selector: ".dayi-star",
+              className: "wang-star-1",
+            },
+          },
+          {
+            selector: ".dayi-star",
+            className: "wang-star-1",
+            time: 1500,
+          },
+          {
+            selector: ".dayi-14",
+            className: "show",
+            time: 500,
+            remove: {
+              selector: ".dayi-star",
+              className: "wang-star-1",
+            },
+          },
+          {
+            selector: ".ling-star",
+            className: "wang-star-1",
+            time: 1500,
+          },
+          {
+            selector: ".box-item2",
+            className: "box-item2-show",
+            time: 500,
+          },
+          {
+            selector: ".ling",
+            className: "show",
+            time: 500,
+            remove: {
+              selector: ".ling-star",
+              className: "wang-star-1",
+            },
+          },
+          {
+            selector: ".wang-2",
+            className: "move-yi",
+            time: 1000,
+          },
+
+          {
+            selector: ".yi-1",
+            className: "move-yi2",
+            time: 1000,
+          },
+
+          {
+            selectors: ".box-item > .dayi:not(.dayi-7)",
+            className: "hide",
+            time: 500,
+          },
+
+          {
+            selector: ".wang-3",
+            className: "move-yi3",
+            time: 1000,
+          },
+
+          {
+            selector: ".dayi-7",
+            className: "move-yi4",
+            time: 300,
+          },
+          {
+            selector: ".wang-1",
+            className: "move-yi5",
+            time: 300,
+          },
+          {
+            selector: ".wang-4",
+            className: "move-yi6",
+            time: 300,
+          },
+        ];
+
+        for (const item of arr) {
+          if (item.selector) {
+            $(item.selector).classList.add(item.className);
+          } else if (item.selectors) {
+            for (const $selector of $$(item.selectors)) {
+              $selector.classList.add(item.className);
+            }
+          }
+          if (item.remove) {
+            $(item.remove.selector).classList.remove(item.remove.className);
+          }
+          await awaitTime(item.time);
+        }
+        window.loop && window.loop();
+      };
+      document.addEventListener("DOMContentLoaded", ready);
+    </script>
+    <script src="firework2.js"></script>
+  </body>
+</html>
